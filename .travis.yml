@@ -7,4 +7,11 @@ before_install:
   - go get github.com/mitchellh/gox
   - go get github.com/tcnksm/ghr
 script:
-  - gox -output "dist/{{.OS}}_{{.Arch}}_{{.Dir}}"
+  - gox -os="linux windows" -output "dist/{{.OS}}_{{.Arch}}_{{.Dir}}"
+deploy:	
+  provider: releases	
+  api_key:	
+    secure: "IGIJv+Gau4jzXwgFFAilrLuZ91OaaWFLygo5UD3Ast47RZLh+a8ITau0HPWVoZ3IuPpnQiGwIWDBhFW++TLwZZW+224AbXohwXZ1yENW4+ljOTHPsrAcpuk6Cl+GKYcE/aXN2RhKhHpyFHdzUVjYHX0WUtRB/5J4qxwgN+0z9mstlY0JZvFg4u8213rkdqmuzd/gkGt58cIdfvF2lCn9mbcUbGbatqUAY0EuHOXcMH7nduUIAYQRvEOx55TfwCU27jgIGnU2cp7wh1DgAS9N0JwHDfuUitdNfdbGx944ZitGBjuHWd/cVc/HIxuo5oEjeWq8+sWm6PctozSUVlb5CFmBXlkiczZ+Am/R9hJAr39Y0b8BX/46k8eK/Xq8B3CvbOpeDnfKlfCOwp6jfpW/dhj+KRt3ONAiCwRYleLA7oPrhjrDp+GbomAUqpXJJo+BZSA+dNwr7x38rVBASRNjAEBS72i8BrDOCZdV+0mSfn2JunjXsxtGTgSs4pXez8dIm8z/IzUYak1qvrB7cfcOSeaYRbCkrrm7Nkrfb6XIiXBs7pwcSy6BLFh62oPc4FqGLPCBXKoJcgQyQ8CTYs5XfAS1KFeh1D2ckxmMTRkApNQJWjobt/rY6bn/OFUX8KAe0dmp5cUbGjt5gAYZoYfYbxcsXQLimbMSM9PSeoFO1ds=" 	
+  file_glob: true	
+  file: dist/*	
+  skip_cleanup: true
