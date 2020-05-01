@@ -1,11 +1,10 @@
-language: go	
-go:	
-  - 1.x	
-env:	
-  - "PATH=/home/travis/gopath/bin:$PATH"	
-before_install:	
-  - go get github.com/mitchellh/gox	
-  - gox -build-toolchain	
-  - go get github.com/tcnksm/ghr	
-script:	
-  - gox -output "dist/{{.OS}}_{{.Arch}}_{{.Dir}}"	
+language: go
+go:
+  - 1.x
+env:
+  - "PATH=/home/travis/gopath/bin:$PATH"
+before_install:
+  - go get github.com/mitchellh/gox
+  - go get github.com/tcnksm/ghr
+script:
+  - gox -output "dist/{{.OS}}_{{.Arch}}_{{.Dir}}"
