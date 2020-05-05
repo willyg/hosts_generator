@@ -68,6 +68,7 @@ func fetchHostFile(urls <-chan string, results chan<- []string) {
 		for scanner.Scan() {
 			hosts = append(hosts, scanner.Text())
 		}
+		log.Println("Fetched", len(hosts), "from", url)
 		results <- hosts
 	}
 }
